@@ -151,7 +151,6 @@ $(document).ready(function () {
         object.scaleX = object.scaleX * sX;
         object.scaleY = object.scaleY * sY;
         object.left = object.left * sX;
-        //object.top = (object.top * sY) - mY;
         object.top = (object.top * sY);
         object.setCoords();
 
@@ -194,8 +193,7 @@ $(document).ready(function () {
             var scaleMultiplierY = wantedH / canvas.height;
 
             var objects = canvasHidden.getObjects();
-            for (var i in objects) {
-                //resizeObject(objects[i], scaleMultiplierX, scaleMultiplierY, minusY);
+            for (var i in objects) {       
                 resizeObject(objects[i], scaleMultiplierX, scaleMultiplierY);
             } 
             canvasHidden.renderAll();
