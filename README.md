@@ -4,7 +4,7 @@ Node-Canvas version 1.6.10 on Ubuntu 16.04.3
 Node Fabric version: 2.2.2
 NodeJS version: 8.10.0
 
-Using Chrome (or another browser) and some javascript/HTML code, I create some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas.
+Using some javascript/HTML client side code, I create some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas.
 The HTML canvas has width=900 and height=510 (for example).
 
 Next I save the HTML canvas into a Json file (named for example, project23.viprj) and I send this file to a Ubuntu Nginx/Nodejs server application to create a PNG file.
