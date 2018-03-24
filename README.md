@@ -19,7 +19,7 @@ Removing the scaling, I can see the objects are misplaced (wrong top/left)
 
 ![noscale](https://user-images.githubusercontent.com/20070559/37830486-a2b93478-2ea2-11e8-90f5-86b2178767c1.png)
 
-In the browser version, using fabric 1.7.20 (so no nodeJS nor node-canvas, just javascript and HTML canvas), the PNG image is created with all the objects correctly scaled and positioned.
+In the client version of the code, using fabric 1.7.20 (so no nodeJS nor node-canvas, just javascript and HTML canvas), the PNG image is created with all the objects correctly scaled and positioned.
 
 Maybe I'm assuming/doing  something wrong. Maybe node-canvas does something differently or needs something. I don't know.
 
