@@ -36,7 +36,7 @@ server.listen(44533);
 // HTTP ROUTES
 // ------------------------------------------------------------
 ftestfjson.get('/', function (req, res) {
-	res.sendFile(__dirname + '/testindex.html');
+	res.sendFile(__dirname + '/testJson.html');
 });
 
 ftestfjson.post('/process', function(req, res) {
