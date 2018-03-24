@@ -17,3 +17,57 @@ Removing the scaling, I can see the objects are misplaced (wrong top/left)
 In the browser version, using fabric 1.7.20 (so no nodeJS nor node-canvas, just javascript and HTML canvas), the PNG image is created with all the objects correctly scaled and positioned.
 
 Maybe I'm assuming/doing  something wrong. Maybe node-canvas does something differently or needs something. I don't know.
+
+### Files & Usage
+
+#### Prerequisites
+1. Install Node.JS LTS
+2. Install node modules: express, cors, body-parser, socket.io, pm2
+
+#### The nodejs test applications in this repo
+The repo has 2 different nodejs applications:
+
+1. ftestfjson.js - Creates the PNG from a json string containing client side scaled/repositioned objects
+    The app uses:
+    - package.json-testjson. Rename it as package.json
+    - testJson.html. This is sent by the server to the browser
+    - fabfunction.js
+    - the libs/ folder
+    
+   Create a folder under you user home and put everything in this new folder
+    
+2. ftestfproject.js - Creates the PNG using the project23.viprj (on server) and scale/reposition objects server side
+    The app uses:
+    - package.json-testproject. Rename it as package.json
+    - testProject.html. This is sent by the server to the browser
+    - fabfunction.js
+    - the libs/ folder
+    
+   Create a folder under you user home and put everything in this new folder
+    
+### My server uses Nginx 
+If you use nginx you need to configure it to answer http requests.
+Something like this:
+```
+upstream http_backend {
+  server 127.0.0.1:44533;
+}
+
+server {
+	listen 80;
+	server_name 192.168.248.132; # your server IP
+	root /var/www/html; # www root
+	index index.html;
+
+	location / {
+		proxy_pass http://http_backend;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	        proxy_http_version 1.1;
+	        proxy_set_header Upgrade $http_upgrade;
+	        proxy_set_header Connection 'upgrade';
+	        proxy_set_header Host $host;
+	        proxy_cache_bypass $http_upgrade;
+	}
+}
+```
