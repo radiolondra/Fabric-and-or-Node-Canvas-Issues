@@ -1,12 +1,17 @@
 # Fabric-Node-Canvas-Issues
 
-Node-Canvas version 1.6.10 on Ubuntu 16.04
+Node-Canvas version 1.6.10 on Ubuntu 16.04.3
 Node Fabric version: 2.2.2
 NodeJS version: 8.10.0
 
-I need to scale the objects in the canvas (Textbox and Image fabric derived custom classes) to follow the new canvas width and height assigned in the node app. After this in the nodejs app I create a PNG file with the scaled objects.
+Using Chrome (or another browser) and some javascript/HTML code, I create some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas.
+The HTML canvas has width=900 and height=510 (for example).
 
-The problem is that the generated PNG image (with scaled objects) seems to have all the objects badly scaled and positioned and I don't understand why. 
+Next I save the HTML canvas into a Json file (named for example, project23.viprj) and I send this file to a Ubuntu Nginx/Nodejs server application to create a PNG file.
+
+On the server I need to scale and reposition the objects of the incoming Json file to follow the new node-canvas canvas width (1920) and height (1080) assigned in the node app. After this in the nodejs app I create a PNG file with the modified objects.
+
+The problem is that the generated PNG image (with scaled/repositioned objects) seems to have all the objects badly scaled and positioned and I don't understand why.
 
 ![wrong](https://user-images.githubusercontent.com/20070559/37830450-85efd95a-2ea2-11e8-91db-e910ed8d5a6e.png)
 
@@ -18,11 +23,13 @@ In the browser version, using fabric 1.7.20 (so no nodeJS nor node-canvas, just 
 
 Maybe I'm assuming/doing  something wrong. Maybe node-canvas does something differently or needs something. I don't know.
 
+If anyone has some idea about this issue please let me know.
+
 ### Files & Usage
 
 #### Prerequisites
 1. Install Node.JS LTS
-2. Install node modules: express, cors, body-parser, socket.io, pm2
+2. Install node modules: express, cors, body-parser, socket.io, pm2 (to run apps)
 
 #### The nodejs test applications in this repo
 The repo has 2 different nodejs applications:
