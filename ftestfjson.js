@@ -58,26 +58,26 @@ ftestfjson.post('/process', function(req, res) {
     
 	var canvas = createNodeCanvas();
 	
-	
-	var oriCanvasW = 900;
-	var oriCanvasH = 510;
+	// Node-canvas canvas dimensions
 	var wantedW = 1920;
 	var wantedH = 1080;
 	
 	canvas.setWidth(wantedW);
 	canvas.setHeight(wantedH);
-	
-	var scaleMultiplierX = wantedW / oriCanvasW;
-	var scaleMultiplierY = wantedH / oriCanvasH;	
 		
 	console.log("prepare to load");
 	
+	// data contains json objects already scaled/repositioned in HTML canvas
+	// here we just want to create the PNG from the json as it is
+	// from the node-canvas canvas
 	var data = req.body.mydata;
 	res.end();
     canvas.loadFromJSON(data, function() {
 		console.log("loaded");
 		canvas.renderAll();
 		
+		// here we save the node-canvas canvas content into a new file
+		// so after we can check if data VS new file content are the same
 		var saveJson = JSON.stringify(canvas);
 		fs.writeFile("saveJSON.viprj", saveJson, function(err) {
     		if(err) {
@@ -89,6 +89,7 @@ ftestfjson.post('/process', function(req, res) {
 		
 		console.log("rendered");
 		
+		// Creates the PNG from canvas (createPNGStream)
 		var out = fs.createWriteStream(__dirname + '/mio2.png');
 		var stream = canvas.createPNGStream();
 		stream.on('data', function(chunk){
@@ -101,6 +102,7 @@ ftestfjson.post('/process', function(req, res) {
 		});
 		
 		/*
+		// another way to create the PNG (toDataURL)
 		var dataUrl = canvas.toDataURL({format:'png'});
 		dataUrl = dataUrl.split(',')[1]; 
 		
@@ -115,6 +117,9 @@ ftestfjson.post('/process', function(req, res) {
 			console.log('>> mio2.png file has been saved!');
 		});
 		*/
+		// -----------------------------------------------------------------------
+		// BOTH WAYS TO CREATE PNG FROM CANVAS GENERATE PNG WITH MISPLACED OBJECTS
+		// -----------------------------------------------------------------------
 	});	
 });
 
