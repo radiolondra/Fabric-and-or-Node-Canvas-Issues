@@ -66,15 +66,12 @@ ftestfjson.post('/process', function(req, res) {
 	
 	canvas.setWidth(wantedW);
 	canvas.setHeight(wantedH);
-	//canvas.renderOnAddRemove=false;
 	
 	var scaleMultiplierX = wantedW / oriCanvasW;
-	var scaleMultiplierY = wantedH / oriCanvasH;
-	
-	//res.writeHead(200, {'Content-Type': 'image/png'});
-	
+	var scaleMultiplierY = wantedH / oriCanvasH;	
 		
 	console.log("prepare to load");
+	
 	var data = req.body.mydata;
 	res.end();
     canvas.loadFromJSON(data, function() {
@@ -91,7 +88,7 @@ ftestfjson.post('/process', function(req, res) {
 		}); 
 		
 		console.log("rendered");
-		/*
+		
 		var out = fs.createWriteStream(__dirname + '/mio2.png');
 		var stream = canvas.createPNGStream();
 		stream.on('data', function(chunk){
@@ -100,63 +97,26 @@ ftestfjson.post('/process', function(req, res) {
 		});
 		stream.on('end', function() {
 			//res.end();
-			console.log("Finished!");
+			console.log('>> mio2.png file has been saved!');
 		});
-		*/
+		
+		/*
 		var dataUrl = canvas.toDataURL({format:'png'});
 		dataUrl = dataUrl.split(',')[1]; 
 		
 		var buffer = new Buffer(dataUrl, 'base64');
-		
-		
+
 		// writes the frame to file
 		fs.writeFile(__dirname + '/mio2.png', 
 			buffer.toString('binary'), 
 			'binary', 
 		(err) => {
 	  		if (err) throw err;
-			console.log('--------- mio2.png file has been saved!');
-		});	
-	});
-	
-	/*
-	var data = '';
-    req.on("data",function(chunk){
-        data += chunk.toString();
-        console.log('-- chunk arrived:' + chunk.toString());
-    });
-    req.on("end",function(){
-    	res.end();
-        canvas.loadFromJSON(data, function() {
-			console.log("loaded");
-			canvas.renderAll();
-			
-			console.log("rendered");
-			var out = fs.createWriteStream(__dirname + '/mio2.png');
-			var stream = canvas.createPNGStream();
-			stream.on('data', function(chunk){
-				//res.write(chunk);
-				out.write(chunk);
-			});
-			stream.on('end', function() {
-				//res.end();
-				console.log("Finished!");
-			});
+			console.log('>> mio2.png file has been saved!');
 		});
-    });
-	*/
-	
-	
-	
+		*/
+	});	
 });
 
-function resizeObject(object, sX, sY) {
-
-    object.scaleX = object.scaleX * sX;
-    object.scaleY = object.scaleY * sY;
-    object.left = object.left * sX;
-    object.top = (object.top * sY);
-    object.setCoords();
-}
 // Export this app
 module.exports = ftestfjson;
