@@ -54,11 +54,12 @@ ftest.post('/process', function(req, res) {
             	return fabric.util.transformPoint(this._getTransformedDimensions(), this.getViewportTransform(), true);
         	}
     	});
-    */
+    	*/
     
+	// Creates the node-canvas canvas
 	var canvas = createNodeCanvas();
 	
-	// the HTML canvas dimensions where the objects in the loaded project were created
+	// the HTML canvas dimensions where the objects in the project were created
 	var oriCanvasW = 900;
 	var oriCanvasH = 510;
 	// the NODEJS canvas (node-canvas) wanted new dimensions
@@ -68,6 +69,7 @@ ftest.post('/process', function(req, res) {
 	canvas.setWidth(wantedW);
 	canvas.setHeight(wantedH);
 	
+	// scaling factors
 	var scaleMultiplierX = wantedW / oriCanvasW;
 	var scaleMultiplierY = wantedH / oriCanvasH;
 	
@@ -78,21 +80,22 @@ ftest.post('/process', function(req, res) {
 	
 	console.log("prepare to load");
 	
-	
+	// Read the project file
 	fs.readFile(projectFile, 'utf8', function(err, data) {
   		if (err) throw err;
   		console.log('OK: ' + projectFile);
   		
   		//console.log(data);
   		
-  		// REMOVE THE BOM or loadFromJSON will fail
+  		// REMOVE THE BOM from data loaded or loadFromJSON will fail
   		data = data.replace(/^\uFEFF/, '');
   		
+		// loads the objects in the node-canvas
 		canvas.loadFromJSON(data, function() {
 			console.log("loaded");
 			canvas.renderAll();
             
-			// scaleing and positioning object in the node-canvas
+			// scaling and positioning object in the node-canvas
             		canvas.forEachObject(function (obj) {            	
             	
         			obj.set('scaleX', obj.get('scaleX') * scaleMultiplierX);
@@ -108,6 +111,8 @@ ftest.post('/process', function(req, res) {
             		canvas.renderAll();
 			
        			console.log("rendered");
+			
+			// Creates a PNG file from node-canvas
 			var out = fs.createWriteStream(__dirname + '/mio2.png');
 			var stream = canvas.createPNGStream();
 			stream.on('data', function(chunk){
