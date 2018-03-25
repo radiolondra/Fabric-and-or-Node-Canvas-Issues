@@ -13,7 +13,7 @@ Next I save the HTML canvas into a Json file (named for example, project23.viprj
 
 In the server app I need to scale and reposition the objects of the incoming Json file to follow the new Node-Canvas canvas width (1920) and height (1080) assigned in the node app itself. After this in the nodejs app I create a PNG file with the modified objects.
 
-The problem is that the generated PNG image (with scaled/repositioned objects) seems to have all the objects badly scaled and positioned and I don't understand why.
+The problem is that the generated PNG image (with scaled/repositioned objects) seems to have all the objects badly top positioned and I don't understand why.
 
 
 ## In this situation both NodeJs versions of FabricJs and Node-Canvas are totally unreliable (unusable) for my very simple scopes.
@@ -21,7 +21,7 @@ The problem is that the generated PNG image (with scaled/repositioned objects) s
 
 ![wrong](https://user-images.githubusercontent.com/20070559/37830450-85efd95a-2ea2-11e8-91db-e910ed8d5a6e.png)
 
-Removing the scaling, I can see the objects are misplaced (wrong top/left)
+Removing the scaling, I can see the objects are misplaced (wrong top positions)
 
 ![noscale](https://user-images.githubusercontent.com/20070559/37830486-a2b93478-2ea2-11e8-90f5-86b2178767c1.png)
 
