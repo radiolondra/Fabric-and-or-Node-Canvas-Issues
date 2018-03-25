@@ -56,10 +56,13 @@ The repo has 2 different nodejs applications:
     - the libs/ folder
    
    Enter each folder you created and install the required modules:
+   
    ```cd <yourfolderapp1>``` (for example,ftestjson)
+   
    ```npm install```
    
    ```cd <yourfolderapp2>``` (for example,ftestproject)
+   
    ```npm install```
    
    ### Running apps: a sample.
