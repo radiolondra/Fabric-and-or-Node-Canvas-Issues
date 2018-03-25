@@ -15,7 +15,7 @@ In the server app I need to scale and reposition the objects of the incoming Jso
 
 The problem is that the generated PNG image (with scaled/repositioned objects) seems to have all the objects badly scaled and positioned and I don't understand why.
 
-** In this situation both NodeJs versions of FabricJs and Node-Canvas are totally unusable for my scopes. **
+**In this situation both NodeJs versions of FabricJs and Node-Canvas are totally unusable for my scopes.**
 
 ![wrong](https://user-images.githubusercontent.com/20070559/37830450-85efd95a-2ea2-11e8-91db-e910ed8d5a6e.png)
 
