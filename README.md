@@ -55,13 +55,13 @@ The repo has 2 different nodejs applications:
     - project23.viprj - The project was created previously client side (canvas width:900, height:510)
     - the libs/ folder
    
-   Enter each folder you created and install the required modules:
+   Enter each folder and install the required modules:
    
-   ```cd <yourfolderapp1>``` (for example,ftestjson)
+   ```cd <ftestjson>```
    
    ```npm install```
    
-   ```cd <yourfolderapp2>``` (for example,ftestproject)
+   ```cd <ftestproject>```
    
    ```npm install```
    
