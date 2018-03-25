@@ -7,14 +7,15 @@
 - Node FabricJs version: 2.2.2
 
 
-Using some javascript/HTML client side code, I created some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas.
-The HTML canvas has width=900 and height=510 (for example).
+Using some javascript/HTML client side code, I created some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas. The client side test uses an HTML canvas having width=900 and height=510.
 
-Next I save the HTML canvas into a Json file (named for example, project23.viprj) and I send this file to a Ubuntu Nginx/Nodejs server application to create a PNG file.
+Next I save the HTML canvas into a Json file (named for example, project23.viprj) and I send this file to a running Ubuntu Nginx/Nodejs server application to create a PNG file.
 
-On the server I need to scale and reposition the objects of the incoming Json file to follow the new node-canvas canvas width (1920) and height (1080) assigned in the node app. After this in the nodejs app I create a PNG file with the modified objects.
+In the server app I need to scale and reposition the objects of the incoming Json file to follow the new Node-Canvas canvas width (1920) and height (1080) assigned in the node app itself. After this in the nodejs app I create a PNG file with the modified objects.
 
 The problem is that the generated PNG image (with scaled/repositioned objects) seems to have all the objects badly scaled and positioned and I don't understand why.
+
+In this situation both NodeJs versions of FabricJs and Node-Canvas are totally unusable for my scopes. 
 
 ![wrong](https://user-images.githubusercontent.com/20070559/37830450-85efd95a-2ea2-11e8-91db-e910ed8d5a6e.png)
 
