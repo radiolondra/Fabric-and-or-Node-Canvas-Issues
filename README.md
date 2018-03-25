@@ -59,11 +59,11 @@ The repo has 2 different nodejs applications:
    
    Enter each folder and install the required modules:
    
-   ```cd <ftestjson>```
+   ```cd ftestjson```
    
    ```npm install```
    
-   ```cd <ftestproject>```
+   ```cd ftestproject```
    
    ```npm install```
    
