@@ -38,24 +38,22 @@ If anyone has some idea about this issue please let me know.
 #### The nodejs test applications in this repo
 The repo has 2 different nodejs applications:
 
-1. ftestfjson.js - Creates the PNG from json data created client side containing scaled/repositioned objects
-    The app uses:
-    - package.json-testjson. Rename it as package.json
-    - testJson.html. This is sent by the server to the browser
+1. ftestjson - Creates the PNG from json data created client side containing scaled/repositioned objects
+    The folder contains:
+    - ftestfjson.js. The nodejs app
+    - package.json. The used node-modules
+    - testJson.html. This is served by the server to the client browser
     - fabfunction.js
     - the libs/ folder
     
-   Create a new folder under you user home and put everything in this new folder
-    
-2. ftestfproject.js - Creates the PNG using the project23.viprj (on server) and scale/reposition objects server side
-    The app uses:
-    - package.json-testproject. Rename it as package.json
-    - testProject.html. This is sent by the server to the browser
+2. ftestproject- Creates the PNG using the project23.viprj (on server) and scale/reposition objects server side
+    The folder contains:
+    - ftestfproject.js. The nodejs app
+    - package.json. The used node-modules
+    - testProject.html. This is served by the server to the client browser
     - fabfunction.js
     - project23.viprj - The project was created previously client side (canvas width:900, height:510)
     - the libs/ folder
-    
-   Create a new folder under you user home and put everything in this new folder.
    
    Enter each folder you created and install the required modules:
    ```cd <yourfolderapp1>``` (for example,ftestjson)
@@ -65,6 +63,8 @@ The repo has 2 different nodejs applications:
    ```npm install```
    
    ### Running apps: a sample.
+   
+   Configure your http server to answer http requests (see below).
    
    Change the current directory to one of the new folders created (for example, ftestjson) and run the node application:
    
