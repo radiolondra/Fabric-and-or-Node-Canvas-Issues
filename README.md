@@ -1,10 +1,13 @@
 # Fabric-Node-Canvas-Issues
 
-Node-Canvas version 1.6.10 on Ubuntu 16.04.3
-Node Fabric version: 2.2.2
-NodeJS version: 8.10.0
+- Ubuntu 16.04.3
+- Nginx 1.10.3
+- NodeJs version: 8.10.0
+- Node-Canvas version 1.6.10
+- Node FabricJs version: 2.2.2
 
-Using some javascript/HTML client side code, I create some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas.
+
+Using some javascript/HTML client side code, I created some Fabric objects (Textbox and Image fabric derived custom classes) onto an HTML canvas.
 The HTML canvas has width=900 and height=510 (for example).
 
 Next I save the HTML canvas into a Json file (named for example, project23.viprj) and I send this file to a Ubuntu Nginx/Nodejs server application to create a PNG file.
@@ -29,30 +32,59 @@ If anyone has some idea about this issue please let me know.
 
 #### Prerequisites
 1. Install Node.JS LTS
-2. Install node modules: express, cors, body-parser, socket.io, pm2 (to run apps)
+2. Install process manager to easily run/manage apps: ```sudo npm install pm2 -g ```
 
 #### The nodejs test applications in this repo
 The repo has 2 different nodejs applications:
 
-1. ftestfjson.js - Creates the PNG from a json string containing client side scaled/repositioned objects
+1. ftestfjson.js - Creates the PNG from json data created client side containing scaled/repositioned objects
     The app uses:
     - package.json-testjson. Rename it as package.json
     - testJson.html. This is sent by the server to the browser
     - fabfunction.js
     - the libs/ folder
     
-   Create a folder under you user home and put everything in this new folder
+   Create a new folder under you user home and put everything in this new folder
     
 2. ftestfproject.js - Creates the PNG using the project23.viprj (on server) and scale/reposition objects server side
     The app uses:
     - package.json-testproject. Rename it as package.json
     - testProject.html. This is sent by the server to the browser
     - fabfunction.js
+    - project23.viprj - The project was created previously client side (canvas width:900, height:510)
     - the libs/ folder
     
-   Create a folder under you user home and put everything in this new folder
+   Create a new folder under you user home and put everything in this new folder.
+   
+   Enter each folder you created and install the required modules:
+   ```cd <yourfolderapp1>``` (for example,ftestjson)
+   ```npm install```
+   
+   ```cd <yourfolderapp2>``` (for example,ftestproject)
+   ```npm install```
+   
+   ### Running apps: a sample.
+   
+   Change the current directory to one of the new folders created (for example, ftestjson) and run the node application:
+   
+   ```pm2 start ftestfjson.js```
+   
+   Start viewing logs of the app:
+   
+   ```pm2 logs ftestfjson```
+   
+   Start your browser and type the address of your Nginx server. In my case:
+   
+   ```http://192.168.248.132```
+   
+   This will show the testJson.html page. There are 2 HTML canvas, one with the original objects (top canvas) and another with the same objects scaled and repositioned (bottom). Json data is automatically generated using the bottom canvas and put in the <input> text, ready to be sent to the server app to generate the final PNG as it is.
+   Clicking the button, the json data contained in the <input> text will be sent to the running application on the server.
+   
+If everything goes fine (see the app logs), in the ftestjson folder you'll see a new PNG file created. 
+#### Open it to see the wrongly generated objects.
     
-### My server uses Nginx 
+
+## My server uses Nginx 
 If you use nginx you need to configure it to answer http requests.
 Something like this:
 ```
