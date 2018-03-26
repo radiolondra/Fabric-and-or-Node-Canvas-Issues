@@ -11,7 +11,7 @@ Using some javascript/HTML client side code, I created some Fabric objects (Text
 
 Next I save the HTML canvas into a Json file (named for example, project23.viprj) and I send this file to a running Ubuntu Nginx/Nodejs server application to create a PNG file.
 
-In the server app I need to scale and reposition the objects of the incoming Json file to follow the new Node-Canvas canvas width (1920) and height (1080) assigned in the node app itself. After this in the nodejs app I create a PNG file with the modified objects.
+In the server app I need to scale and reposition the objects of the incoming Json file to follow the new, by Node-Canvas handled, canvas width (1920) and height (1080) assigned in the node app itself. After this in the nodejs app I create a PNG file with the modified objects.
 
 The problem is that the generated PNG image (with scaled/repositioned objects) seems to have all the objects badly top positioned and I don't understand why.
 
